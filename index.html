@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swayam's Flappy Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-wrapper">
+        <div class="stars"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div id="menu-screen" class="screen active">
+            <h1 class="game-title">
+                <span class="title-main">Swayam's</span>
+                <span class="title-sub">Flappy Game</span>
+            </h1>
+            
+            <div class="menu-buttons">
+                <button id="play-btn" class="btn btn-play">
+                    <span class="btn-icon">▶</span>
+                    <span>Play Game</span>
+                </button>
+                <button id="customize-btn" class="btn btn-customize">
+                    <span class="btn-icon">🎨</span>
+                    <span>Customize</span>
+                </button>
+            </div>
+            
+            <div class="high-score-display">
+                <span class="trophy">🏆</span>
+                <span>Best: <span id="menu-high-score">0</span></span>
+            </div>
+        </div>
+
+        <div id="customize-screen" class="screen">
+            <h2 class="screen-title">Customize Your Game</h2>
+            
+            <div class="customize-grid">
+                <div class="customize-card">
+                    <div class="card-icon">🐦</div>
+                    <h3>Player Image</h3>
+                    <p>Your character that flies</p>
+                    <label class="file-upload">
+                        <input type="file" id="bird-upload" accept="image/*">
+                        <span class="upload-btn">Choose Image</span>
+                    </label>
+                    <div id="bird-preview" class="preview"></div>
+                </div>
+                
+                <div class="customize-card">
+                    <div class="card-icon">🏛️</div>
+                    <h3>Obstacle Image</h3>
+                    <p>The pipes you avoid</p>
+                    <label class="file-upload">
+                        <input type="file" id="pipe-upload" accept="image/*">
+                        <span class="upload-btn">Choose Image</span>
+                    </label>
+                    <div id="pipe-preview" class="preview"></div>
+                </div>
+                
+                <div class="customize-card">
+                    <div class="card-icon">🎵</div>
+                    <h3>Background Music</h3>
+                    <p>Music while playing</p>
+                    <label class="file-upload">
+                        <input type="file" id="music-upload" accept="audio/*">
+                        <span class="upload-btn">Choose Audio</span>
+                    </label>
+                    <div id="music-preview" class="preview"></div>
+                </div>
+                
+                <div class="customize-card">
+                    <div class="card-icon">🔊</div>
+                    <h3>Jump Sound</h3>
+                    <p>Sound when you jump</p>
+                    <label class="file-upload">
+                        <input type="file" id="jump-upload" accept="audio/*">
+                        <span class="upload-btn">Choose Audio</span>
+                    </label>
+                    <div id="jump-preview" class="preview"></div>
+                </div>
+            </div>
+            
+            <div class="customize-actions">
+                <button id="back-to-menu" class="btn btn-back">
+                    <span>← Back to Menu</span>
+                </button>
+                <button id="clear-assets" class="btn btn-clear">
+                    <span>🗑️ Clear All Saved</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <div id="score-display" class="score">0</div>
+                <button id="pause-btn" class="btn-icon-only">⏸</button>
+            </div>
+            
+            <canvas id="game-canvas"></canvas>
+            
+            <div id="start-prompt" class="prompt">
+                <span class="tap-icon">👆</span>
+                <p>Tap or Press Space to Start</p>
+            </div>
+        </div>
+
+        <div id="game-over-screen" class="screen">
+            <div class="game-over-content">
+                <h2 class="game-over-title">Game Over!</h2>
+                
+                <div class="score-summary">
+                    <div class="score-item">
+                        <span class="score-label">Score</span>
+                        <span id="final-score" class="score-value">0</span>
+                    </div>
+                    <div class="score-divider"></div>
+                    <div class="score-item">
+                        <span class="score-label">Best</span>
+                        <span id="high-score" class="score-value highlight">0</span>
+                    </div>
+                </div>
+                
+                <div class="game-over-buttons">
+                    <button id="retry-btn" class="btn btn-play">
+                        <span class="btn-icon">🔄</span>
+                        <span>Play Again</span>
+                    </button>
+                    <button id="menu-btn" class="btn btn-back">
+                        <span class="btn-icon">🏠</span>
+                        <span>Menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="pause-screen" class="screen overlay">
+            <div class="pause-content">
+                <h2>Paused</h2>
+                <button id="resume-btn" class="btn btn-play">
+                    <span class="btn-icon">▶</span>
+                    <span>Resume</span>
+                </button>
+                <button id="quit-btn" class="btn btn-back">
+                    <span class="btn-icon">🏠</span>
+                    <span>Quit to Menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
+
